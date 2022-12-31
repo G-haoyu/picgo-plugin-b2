@@ -19,14 +19,3 @@
 #### 鸣谢
 
 [GitHub - xlzy520/picgo-plugin-smms-user: a plugin for picgo for SM.MS](https://github.com/xlzy520/picgo-plugin-smms-user)
-
-### temp log
-- picgo config dir: C:\Users\42173\.picgo
-
-- select plugin: picgo use uploader
-
-- uninstall: picgo uninstall picgo-plugin-b2
-
-- install: npm install ./picgo-plugin-b2
-
-- set config: picgo set uploader b2
