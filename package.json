@@ -27,5 +27,9 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/G-haoyu/picgo-plugin-b2.git"
   }
 }
