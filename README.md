@@ -1,13 +1,12 @@
 ## picgo-plugin-b2
 
-*作者：Oto_G*
-
 <p align="center">
   <a href="https://cnblogs.com/oto-g"><img src="https://img.shields.io/badge/BLOG-@Oto_G-green.svg" alt="BLOG"></a>
   <img src="https://img.shields.io/github/license/G-haoyu/picgo-plugin-b2" alt="MIT">
   <a href="https://www.npmjs.com/package/picgo-plugin-b2?activeTab=readme"><img src="https://img.shields.io/badge/NPM-picgo_plugin_b2-yellow.svg" alt="NPM"></a>
 </p>
 
+*作者：Oto_G*
 
 使 [PicGo](https://github.com/Molunerfinn/PicGo) 图床工具可以支持 [B2 Cloud Storage](https://www.backblaze.com/b2/cloud-storage.html) 对象存储（下简称 B2 ），由于 B2 对普通用户有免费 10GB 存储容量以及每日 1GB 的下载流量，非常适合用来做图床，但 PicGo 并没有相应的支持插件，所以 **picgo-plugin-b2** 应运而生
 
