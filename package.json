@@ -1,6 +1,6 @@
 {
   "name": "picgo-plugin-b2",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "picgo b2 cloud storage uploader",
   "main": "src/index.js",
   "publishConfig": {
