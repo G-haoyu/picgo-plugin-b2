@@ -15,6 +15,8 @@
 > 该插件是为命令行版 Picgo 开发（理论上对有 UI 版 PicGo 同样支持）
 >
 > 配合 [Typora](https://github.com/typora) + PicGo Cli 使用最佳
+>
+> picgo-plugin-b2 v1.x.x 支持 PicGo-CLI < v1.5.0 || PicGo-GUI V2.0.2 ~ V2.2.0
 
 - PicGo CLI 下
   - 命令行下输入`picgo install b2`进行安装
