@@ -7,7 +7,7 @@ var isAPIValid = function(apiConfig) {
     a1ReqTime = new Date(a1ReqTime)
     a2ReqTime = new Date(a2ReqTime)
 
-    if(isIn23Hours(a1ReqTime) && isIn23Hours(a2ReqTime)) {
+    if (isIn23Hours(a1ReqTime) && isIn23Hours(a2ReqTime)) {
         isValid = true
     }
 
@@ -15,6 +15,9 @@ var isAPIValid = function(apiConfig) {
 }
 
 var freshenAPI = async function(ctx, userConfig, apiConfig) {
+    // version compatible
+    var CtxRequest = ctx.Request.request || ctx.request
+
     // 1. B2_API: b2_authorize_account
     let appIDKey = userConfig.applicationKeyId +
     ":" + userConfig.applicationKey
@@ -23,9 +26,9 @@ var freshenAPI = async function(ctx, userConfig, apiConfig) {
     // request to get general authorizationToken and basic info
     const a1GetOpt = Get_Options_B2_Authorize_Account(auth)
     let requestTime = new Date()
-    let body = await ctx.Request.request(a1GetOpt)
+    let body = await CtxRequest(a1GetOpt)
     body = JSON.parse(body)
-    if(!body.accountId) {
+    if (!body.accountId) {
         throw new Error("get B2_Authorize_Account Failed")
     }
     
@@ -48,8 +51,8 @@ var freshenAPI = async function(ctx, userConfig, apiConfig) {
     // request to upload API authorizationToken
     const a2PostOpt = POST_Options_B2_Get_Upload_Url(apiUrl, authToken, bucketId)
     requestTime = new Date()
-    body = await ctx.Request.request(a2PostOpt)
-    if(!body.authorizationToken) {
+    body = await CtxRequest(a2PostOpt)
+    if (!body.authorizationToken) {
         throw new Error("get B2_Get_Upload_Url Failed")
     }
 
@@ -67,7 +70,7 @@ function isIn23Hours(t) {
     let times = nowTime.getTime() - t.getTime()
     let leaveHours = parseInt(times / (3600*1000))
     
-    if(leaveHours < 23 && leaveHours >= 0) {
+    if (leaveHours < 23 && leaveHours >= 0) {
         res = true
     }
 

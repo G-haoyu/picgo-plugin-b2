@@ -1,4 +1,7 @@
 var uploadImage = async function(ctx) {
+    // version compatible
+    var CtxRequest = ctx.Request.request || ctx.request
+
     const apiConfig = ctx.getConfig('b2')
     const uploadUrl =
      apiConfig.b2_get_upload_url.uploadUrl
@@ -6,9 +9,9 @@ var uploadImage = async function(ctx) {
      apiConfig.b2_get_upload_url.authorizationToken
     const imgList = ctx.output
     
-    for(let i in imgList) {
+    for (let i in imgList) {
         let image = imgList[i].buffer
-        if(!image && imgList[i].base64Image) {
+        if (!image && imgList[i].base64Image) {
             image = Buffer.from(imgList[i].base64Image, 'base64');
         }
 
@@ -20,9 +23,9 @@ var uploadImage = async function(ctx) {
         const a3PostOpt = POST_B2_Upload_File(
              uploadUrl, authToken, imgList[i],
              image, imgSha1)
-        let body = await ctx.Request.request(a3PostOpt)
+        let body = await CtxRequest(a3PostOpt)
         body = JSON.parse(body)
-        if(!body.fileId) {
+        if (!body.fileId) {
             throw new Error("upload Image Failed")
         }
 
@@ -33,7 +36,7 @@ var uploadImage = async function(ctx) {
          apiConfig.b2_authorize_account.downloadUrl
         const bucketName =
          apiConfig.b2_authorize_account.bucketName
-        if(bucketName){
+        if (bucketName) {
            imgList[i]['imgUrl'] =
              downloadURL + "/file/" + bucketName +
              "/" + imgList[i].fileName

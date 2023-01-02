@@ -6,7 +6,7 @@ module.exports = (ctx) => {
     }
 
     let apiConfig = ctx.getConfig('b2')
-    if(!apiConfig) {
+    if (!apiConfig) {
       let B2CFG = require("./config")
       ctx.saveConfig(B2CFG.B2_API_CONFIG_DEFAULT())
     }
@@ -49,9 +49,9 @@ module.exports = (ctx) => {
     let apiUtil = require("./freshenAPI")
     
     // if B2 API authorizationToken invalid, let it valid
-    if(!apiUtil.isAPIValid(apiConfig)) {
+    if (!apiUtil.isAPIValid(apiConfig)) {
       // freshen API
-      try{
+      try {
         await apiUtil.freshenAPI(ctx, userConfig, apiConfig)
       } catch (err) {
         throw err
