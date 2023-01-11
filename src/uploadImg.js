@@ -10,6 +10,9 @@ var uploadImage = async function(ctx) {
     const imgList = ctx.output
     
     for (let i in imgList) {
+        // Fix Char Encode Error
+        imgList[i].fileName = encodeURIComponent(imgList[i].fileName)
+        
         let image = imgList[i].buffer
         if (!image && imgList[i].base64Image) {
             image = Buffer.from(imgList[i].base64Image, 'base64');
